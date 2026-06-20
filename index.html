@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Five Tastes — 五味辞典 · A Dictionary of Taste</title>
+<meta name="description" content="An interactive dictionary of the five basic tastes — sweet, sour, bitter, salty and umami — with meanings, animated kanji stroke order, N5 grammar, synonyms, antonyms and idioms." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..560&family=Geist:wght@300..600&family=Geist+Mono:wght@400..600&family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css?v=tongue-interactive" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23211c16'/%3E%3Ctext x='50' y='72' font-size='62' text-anchor='middle' fill='%23faf6ec' font-family='serif'%3E味%3C/text%3E%3C/svg%3E" /></head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============================================================ HERO -->
+<header class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"><div class="hero__watermark">味</div></div>
+  <div class="wrap">
+    <h1 class="reveal">A field guide to the <em>five</em> things the <span class="jp">舌</span> can taste.</h1>
+    <p class="hero__lead reveal" data-d="1">Search sweet, sour, bitter, spicy/salty or umami to open the matching taste page.</p>
+
+    <!-- ====================================================== SEARCH -->
+    <div class="search reveal" data-d="2" id="search">
+      <form class="search__bar" role="search" autocomplete="off">
+        <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+        <input id="searchInput" class="search__input" type="search"
+               placeholder="Look up a taste — &ldquo;sweet&rdquo;, 甘い, karai…"
+               role="combobox" aria-expanded="false" aria-controls="searchPanel"
+               aria-autocomplete="list" aria-label="Search the five tastes" spellcheck="false" />
+        <button type="button" class="search__clear" id="searchClear" aria-label="Clear search" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </form>
+      <div class="search__panel" id="searchPanel" role="listbox" aria-label="Search results"></div>
+    </div>
+
+    <section class="method reveal" data-d="3" aria-labelledby="method-title">
+      <span class="eyebrow">How meanings are chosen</span>
+      <h2 id="method-title">Corpus data : Japanese Web 2011 (jaTenTen11)</h2>
+      <p>The dictionary focuses on meanings that frequently appear in native-speaker corpus data from Sketch Engines. For each word, we searched examples with the concordance tool on Sketch Engine and collected about 200 examples. We then categorized each into definitions. We then picked easy Japanese examples for Japanese learners, around JLPT N4/N5, for each definition.</p>
+      <p><strong>For idioms:</strong> We try to use idioms that are relatively easy for beginners to understand, and complex ones are annotated.</p>
+    </section>
+  </div>
+</header>
+
+<!-- ========================================================= ENTRIES -->
+<main class="entries" id="entries" aria-live="polite"></main>
+
+<!-- ========================================================== FOOTER -->
+<footer class="foot" id="colophon">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__cta">
+        <h2>Five tastes,<br />one <span class="jp">舌</span>.</h2>
+        <p class="hero__lead" style="margin-top:0">A small reference built for the curious and for anyone learning their first Japanese adjectives. Taste widely.</p>
+      </div>
+      <nav class="foot__taste-list" id="footTaste" aria-label="Tastes"></nav>
+    </div>
+    <div class="foot__meta">
+      <span>五味辞典 — A Dictionary of Taste</span>
+      <span>Stroke data: <a href="http://kanjivg.tagaini.net" target="_blank" rel="noopener">KanjiVG</a> · CC BY-SA 3.0</span>
+      <span>Set in Fraunces, Geist &amp; Shippori Mincho</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<!-- app.js first so entries render immediately, before the heavier tongue
+     assets download (deferred scripts run in document order). -->
+<script src="app.js" defer></script>
+<!-- Three.js r136 — the last UMD (non-module) build, so the interactive tongue
+     loads from file:// with no server, exactly like the GSAP scripts above. -->
+<script src="https://unpkg.com/three@0.136.0/build/three.min.js" defer></script>
+<script src="tongue-geometry.js" defer></script>
+<script src="palate3d.js" defer></script>
+</body>
+</html>
